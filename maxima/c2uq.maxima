@@ -1,0 +1,70 @@
+ratprint: false$
+keepfloat:true$
+com1(ne1):= ([
+F:96500,
+R:8.3,
+T:298,
+frt:F/(R*T),
+/*−60 to −79: FAD,
+ +10:  [2Fe-2S],
+ −175: [4Fe-4S],
+ +65:  [3Fe-4S],
+ +36:  heme b,
+ +90:  ubiquinone*/
+ 
+ dfh_f2s: 0.090, /*ΔE: fadh + f2so <-> fads + f2sr */
+ df_f2s: 0.090, /*ΔE: fads + f2so <-> fad + f2sr */
+ d2_f4s: -0.185, /*ΔE: f2sr + f4so <-> f2so + f4sr */
+ d4_f3s: 0.24,  /*ΔE: f4sr + f3so <-> f4so + f3sr */
+ df3s_b: -0.03, /*ΔE: f3sr + bo <-> f3so + br */
+ db_uq:  0.055,  /*ΔE: br + uq <-> bo + uqs */
+ db_uqs:  0.055,  /*ΔE: br + uqs <-> bo + uqh */
+	kfh_f2s:  exp(frt*dfh_f2s),
+	kf_f2s:  exp(frt*df_f2s),
+	k2_f4s:   exp(frt*d2_f4s),
+	k4_f3s:  exp(frt*d4_f3s),
+	kf3s_b: exp(frt*df3s_b),
+	kb_uq: exp(frt*(db_uq)),
+	kb_uqs: exp(frt*(db_uqs)),
+  fh_f2s: kfh_f2s-fads*f2sr/(fadh*(1-f2sr)),
+  f_f2s: kf_f2s-fad*f2sr/(fads*(1-f2sr)),
+  f_f4s: k2_f4s-(1-f2sr)*f4sr/(f2sr*(1-f4sr)),
+  f_f3s: k4_f3s-(1-f4sr)*f3sr/(f4sr*(1-f3sr)),
+  f_b: kf3s_b-(1-f3sr)*br/(f3sr*(1-br)),
+  f_uq: kb_uq-uqs*(1-br)/(uq*br),
+  f_uqs: kb_uqs-uqh*(1-br)/(uqs*br),
+  sum_fad: fadh + fads + fad -1.,
+  sum_uq: uqh + uqs + uq -1.,
+  sum_e1: fadh*2+fads+f2sr+f4sr+f3sr+uqh*2+uqs-ne1],
+sol:solve([fh_f2s,f_f2s,f_f4s,f_f3s,f_b,f_uq,f_uqs,sum_fad,sum_uq,sum_e1],[fadh,fads,fad,f2sr,f4sr,f3sr,br,uqh,uqs,uq]), sol)$
+
+lll: makelist(0,11)$
+
+nume:1$
+sol: com1(nume);
+len: length(sol)$
+for j: 1 thru len do (if apply(min, ll:makelist (rhs(sol[j][i]),i,10))>=0 then lll[nume]:ll)$
+
+nume:2$
+sol: com1(nume);
+len: length(sol)$
+for j: 1 thru len do (if apply(min, ll:makelist (rhs(sol[j][i]),i,10))>=0 then lll[nume]:ll)$
+
+nume:3$
+sol: com1(nume);
+len: length(sol)$
+for j: 1 thru len do (if apply(min, ll:makelist (rhs(sol[j][i]),i,10))>=0 then lll[nume]:ll)$
+
+nume:4$
+sol: com1(nume);
+len: length(sol)$
+for j: 1 thru len do (if apply(min, ll:makelist (rhs(sol[j][i]),i,10))>=0 then lll[nume]:ll)$
+
+nume:5$
+sol: com1(nume);
+len: length(sol)$
+for j: 1 thru len do (if apply(min, ll:makelist (rhs(sol[j][i]),i,10))>=0 then lll[nume]:ll)$
+
+
+fpprintprec: 5$ write_data ([[fadh,fads,fad,f2sr,f4sr,f3sr,br,uqh,uqs,uq],lll],"c2rocalc")$
+

@@ -1,0 +1,34 @@
+all: nr.a
+
+nr.a: bsstep.o mmid.o odeint.o pythag.o pzextr.o amoeba.o amotry.o rkqs.o rkck.o
+	ar r nr.a bsstep.o mmid.o odeint.o pythag.o pzextr.o amoeba.o amotry.o rkqs.o rkck.o
+
+bsstep.o: bsstep.cpp
+	icc -O3 -c -I../include bsstep.cpp 
+
+mmid.o: mmid.cpp
+	icc -O3 -c  -I../include mmid.cpp 
+
+odeint.o: odeint.cpp
+	icc -O3 -c  -I../include odeint.cpp 
+
+pythag.o: pythag.cpp
+	icc -O3 -c  -I../include pythag.cpp 
+
+pzextr.o: pzextr.cpp
+	icc -O3 -c  -I../include pzextr.cpp 
+
+amoeba.o: amoeba.cpp
+	icc -O3 -c  -I../include amoeba.cpp 
+
+amotry.o: amotry.cpp
+	icc -O3 -c  -I../include amotry.cpp 
+
+rkqs.o: rkqs.cpp
+	icc -O3 -c  -I../include rkqs.cpp 
+
+rkck.o: rkck.cpp
+	icc -O3 -c  -I../include rkck.cpp 
+
+clean:	
+	rm -f bsstep.o mmid.o odeint.o pythag.o pzextr.o amoeba.o amotry.o rkqs.o rkck.o nr.a

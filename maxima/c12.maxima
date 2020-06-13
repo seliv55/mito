@@ -1,0 +1,93 @@
+ratprint: false$
+keepfloat:true$
+com1(ne1,ne2):= ([
+F:96500,
+R:8.3,
+T:298,
+frt:F/(R*T),
+ dfh_n3: 0.043, /*ΔE: fmnh + No <-> fmns + N3r */
+ df_n3:  0.139, /*ΔE: fmns + No <-> fmn + N3r */
+ df_n1a: 0.009, /*ΔE: fmns + N1o <-> fmn + N1ar */
+ dn6b_n2:0.15, /*ΔE: N3r + N2o <-> No + N2r */
+	kfh_n3:  exp(frt*dfh_n3),
+	kf_n3:   exp(frt*df_n3),
+	kf_n1a:  exp(frt*df_n1a),
+	kn6b_n2: exp(frt*dn6b_n2),
+	kfh_n1a: exp(frt*(-0.05)),
+  fh_n3: kfh_n3-fmns*N3r/(fmnh*(1-N3r)),
+  f_n3: kf_n3-fmn*N3r/(fmns*(1-N3r)),
+  f_n1a: kf_n1a-fmn*N1ar/(fmns*(1-N1ar)),
+  f_n1a1: kfh_n1a-fmns*N1ar/(fmnh*(1-N1ar)),
+  n3_1b: 1-(1-N3r)*N1br/(N3r*(1-N1br)), 
+  n1b_4: 1-(1-N1br)*N4r/(N1br*(1-N4r)), 
+  n4_5: 1-(1-N4r)*N5r/(N4r*(1-N5r)), 
+  sum_e1: fmnh*2+fmns+N3r+N1ar+N1br+N4r+N5r-ne1,
+  sum_fmn: fmnh + fmns + fmn -1.,
+  if ne1>5 then (f_n1a: kfh_n1a-fmns*N1ar/(fmnh*(1-N1ar)),f_n3:fmn-0), 
+  
+  n6a_b: 1-(1-N6ar)*N6br/(N6ar*(1-N6br)), 
+  n6b_2: kn6b_n2-(1-N6br)*N2r/(N6br*N2o), 
+  sum_n2: N2o+N2r-1.,
+  sum_e2: N6ar+N6br+N2r-ne2],
+    if ne2=0 then
+sol:solve([fh_n3,f_n3,f_n1a,n3_1b,n1b_4,n4_5,sum_e1,sum_fmn],[N1ar,fmnh,fmns,fmn,N3r,N1br,N4r,N5r]) else sol:float(solve([n6a_b,n6b_2,sum_n2,sum_e2],[N6ar,N6br,N2r,N2o])), sol)$
+
+lll: makelist(0,11)$
+
+nume:1$
+nume2:0$
+sol: com1(nume,nume2);
+len: length(sol)$
+for j: 1 thru len do (if apply(min, ll:makelist (rhs(sol[j][i]),i,8))>0 then lll[nume]:ll)$
+
+nume:2$
+nume2:0$
+sol: com1(nume,nume2);
+len: length(sol)$
+for j: 1 thru len do (
+if apply(min, ll:makelist (rhs(sol[j][i]),i,8))>0 then lll[nume]:ll)$
+
+nume:3$
+nume2:0$
+sol: com1(nume,nume2);
+len: length(sol)$
+for j: 1 thru len do (
+if apply(min, ll:makelist (rhs(sol[j][i]),i,8))>0 then lll[nume]:ll)$
+
+nume:4$
+nume2:0$
+sol: com1(nume,nume2);
+len: length(sol)$
+for j: 1 thru len do (
+if apply(min, ll:makelist (rhs(sol[j][i]),i,8))>0 then lll[nume]:ll)$
+
+nume:5$
+nume2:0$
+sol: com1(nume,nume2);
+len: length(sol)$
+for j: 1 thru len do (
+if apply(min, ll:makelist (rhs(sol[j][i]),i,8))>0 then lll[nume]:ll)$
+
+nume:6$
+nume2:0$
+sol: com1(nume,nume2);
+len: length(sol);
+for j: 1 thru len do (
+if apply(min, ll:makelist (rhs(sol[j][i]),i,8))>=0 then lll[nume]:ll)$
+
+nume:6$
+nume2:1$
+sol: com1(nume,nume2);
+len: length(sol);
+for j: 1 thru len do (
+if apply(min, ll:makelist (rhs(sol[j][i]),i,4))>0 then lll[nume+nume2]:ll)$
+
+nume:6$
+nume2:2$
+sol: com1(nume,nume2);
+len: length(sol);
+for j: 1 thru len do (
+if apply(min, ll:makelist (rhs(sol[j][i]),i,4))>0 then lll[nume+nume2]:ll)$
+
+fpprintprec: 5$ write_data ([[N1ar,fmnh,fmns,fmn,N3r,N1br,N4r,N5r],lll],"c1rocalc")$
+
