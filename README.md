@@ -1,2 +1,2 @@
-# mito
-Detailed description of mitochondrial respiration
+# mitodyn
+Basic model simulatin mitochondrial respiration
