@@ -41,35 +41,30 @@ len: length(sol)$
 for j: 1 thru len do (if apply(min, ll:makelist (rhs(sol[j][i]),i,8))>0 then lll[nume]:ll)$
 
 nume:2$
-nume2:0$
 sol: com1(nume,nume2);
 len: length(sol)$
 for j: 1 thru len do (
 if apply(min, ll:makelist (rhs(sol[j][i]),i,8))>0 then lll[nume]:ll)$
 
 nume:3$
-nume2:0$
 sol: com1(nume,nume2);
 len: length(sol)$
 for j: 1 thru len do (
 if apply(min, ll:makelist (rhs(sol[j][i]),i,8))>0 then lll[nume]:ll)$
 
 nume:4$
-nume2:0$
 sol: com1(nume,nume2);
 len: length(sol)$
 for j: 1 thru len do (
 if apply(min, ll:makelist (rhs(sol[j][i]),i,8))>0 then lll[nume]:ll)$
 
 nume:5$
-nume2:0$
 sol: com1(nume,nume2);
 len: length(sol)$
 for j: 1 thru len do (
 if apply(min, ll:makelist (rhs(sol[j][i]),i,8))>0 then lll[nume]:ll)$
 
 nume:6$
-nume2:0$
 sol: com1(nume,nume2);
 len: length(sol);
 for j: 1 thru len do (

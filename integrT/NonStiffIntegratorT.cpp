@@ -8,7 +8,7 @@
 
 #include <cstring>
 #include "NonStiffIntegratorT.h"
-#include "nums.hh"
+//#include "nums.hh"
 
 // Constructors
 

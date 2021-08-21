@@ -4,6 +4,7 @@
 #include <fstream>
 #include <cmath>
 #include <bitset>  
+#include <vector>  
 namespace Label {
 
 class Metab{
@@ -44,11 +45,12 @@ double fmnred(const double kf,const double kr,const double nadh,const double nad
  for(int k=0;k<nq;k++)	
   for(int j=0;j<n62;j++)
    for(int i=0;i<(nfmn5-2);i++) { ox=k*nfmn2+j*nfmn5+i; red=ox+2;
-    if(nfmn2-red) { x=kf*pfmn[i]*nadh*isot[ox]-kr*pfmnh[i+2]*isot[red]*nad;
+    if(len-red) { x=kf*pfmn[i]*nadh*isot[ox]-kr*pfmnh[i+2]*isot[red]*nad;
 		disot[red] +=x; disot[ox] -=x; sum +=x; }
     else {x=kf*pfmn[i]*nadh*isot[ox]-kr*pfmnh[7]*e6*nad; disot[ox] -=x; sum +=x; }
-             }
-                  return sum; }
+   }
+ return sum; }
+ 
 double getfs(double pfs[]) {
   double sum=0.; int j=0;
   for(int k=0;k<nq;k++)	
@@ -58,47 +60,46 @@ double getfs(double pfs[]) {
   return sum;}
 
 double n2q(const double kf1,const double kr1,const double kf2,const double kr2,double pn2red[]) {
-		double xf, xr, x, sum=0, kf=kf1, kr=kr1; int isub,iprod;
+ double x, sum=0, kf=kf1, kr=kr1; int isub,iprod;
  for(int k=0;k<(nq-1);k++) { if(k) { kf=kf2; kr=kr2; }
   for(int j=1;j<n62;j++) 		
    for(int i=0;i<nfmn5;i++) { isub=k*nfmn2+j*nfmn5+i; iprod=isub+nfmn2-nfmn5;
-        xf=kf*pn2red[j]*isot[isub]; xr=kr*(1.-pn2red[j-1])*isot[iprod]; x=xf-xr;
-		disot[iprod] +=x; disot[isub] -=x; sum +=x;
-		}}
-		return sum; }
+        x=kf*pn2red[j]*isot[isub] - kr*(1.-pn2red[j-1])*isot[iprod];
+        disot[iprod] +=x; disot[isub] -=x; sum +=x;
+	}}
+ return sum; }
 
 double n562(const double kf1,const double kr1,double pn5red[],double pn6ar[]) {
-		double x, sum=0; int isub,iprod;
+ double x, sum=0; int isub,iprod;
  for(int k=0;k<nq;k++)
   for(int j=0;j<(n62-1);j++) 		
-   for(int i=1;i<nfmn5;i++) { isub=k*nfmn2+j*nfmn5+i; iprod=isub+7;
-        x=kf1*pn5red[i]*(1.-pn6ar[j])*isot[isub]-kr1*(1.-pn5red[i-1])*pn6ar[j+1]*isot[iprod];
-		disot[iprod] +=x; disot[isub] -=x; sum +=x;
-		}
-		return sum; }
+   for(int i=1;i<nfmn5;i++) { isub=k*nfmn2+j*nfmn5+i; iprod=isub+nfmn5-1;
+        x=kf1*pn5red[i]*(1.-pn6ar[j])*isot[isub]-kr1*(1.-pn5red[i-1])* pn6ar[j+1] *isot[iprod];
+	disot[iprod] +=x; disot[isub] -=x; sum +=x;
+	}
+ return sum; }
 
 double getsq(){ double sum=0.;
   for(int i=nfmn2;i<2*nfmn2;i++) sum += isot[nfmn2];
   return sum;}
 
 double qhdiss1(cI& cr,double& qh,const double kf,const double kr) {
-		double x, sum=0.; int i1;
-   for(int i=0;i<(nfmn2-1);i++){ i1=2*nfmn2+i;
-     x = kf*isot[i1] - kr*qh*cr.isot[i];
-	 disot[i1] -=x;   cr.disot[i] += x; sum += x; }
-     x = kf*isot[3*nfmn2-1] - kr*qh*cr.e6; disot[3*nfmn2-1] -=x; sum += x; 
-	return sum;
-	}
+ double x, sum=0.; int i1;
+ for(int i=0;i<(nfmn2-1);i++){ i1=2*nfmn2+i;
+	x = kf*isot[i1] - kr*qh*cr.isot[i];
+	disot[i1] -=x;   cr.disot[i] += x; sum += x; }
+ x = kf*isot[3*nfmn2-1] - kr*qh*cr.e6; disot[3*nfmn2-1] -=x; sum += x; 
+ return sum; }
+
 double qbind1(cI& qhc1,double q, const double kf,const double kr) {
-		double x,sum=0.;
-   for(int i=0;i<nfmn2;i++){ 
-    x = kf*isot[i]*q - kr*qhc1.isot[i];
-      disot[i] -=x;   qhc1.disot[i] += x; sum += x; }
-   x = kf*e6*q - kr*qhc1.isot[nfmn2-1];  qhc1.disot[nfmn2-1] += x; sum += x;
-	return sum;
-	}	
-		cI(int l):Metab(l){}
-		~cI(){}
+ double x,sum=0.;
+ for(int i=0;i<nfmn2;i++){ 
+	x = kf*isot[i]*q - kr*qhc1.isot[i];
+	disot[i] -=x;   qhc1.disot[i] += x; sum += x; }
+ x = kf*e6*q - kr*qhc1.isot[nfmn2-1];  qhc1.disot[nfmn2-1] += x; sum += x;
+ return sum; }	
+cI(int l):Metab(l){}
+~cI(){}
 };
 
 class cII:public Metab{
@@ -114,12 +115,13 @@ class cII:public Metab{
   void write(std::ofstream& fi) const {
     for(int i=0;i<len;i++) fi << isot[i] << "\n"; }
 
-  double fadred(const double kf,const double kr,const double suc,const double fum) {
+  double fadred(const double kf,const double kr,const double suc,const double fum,double cr11) {
    double x, sum=0; int ox,red;
    for(int j=0;j<nq;j++)	
      for(int i=0;i<(nfsb);i++) { ox=j*nfsb*nfad+i*nfad; red=ox+2;
-       x=kf*suc*isot[ox]-kr*isot[red]*fum;
-       if(red<len) disot[red] +=x; disot[ox] -=x; sum +=x;     }
+       if(red<len){x=kf*suc*isot[ox]-kr*isot[red]*fum; disot[red] +=x;}
+       else {x=kf*suc*isot[ox]-kr*cr11*fum;}
+       disot[ox] -=x; sum +=x;     }
    return sum; }
 
   double fadfs(const double kf,const double kr, double f2sr[]) {
@@ -128,15 +130,6 @@ class cII:public Metab{
      for(int i=0;i<(nfsb-1);i++)
        for(int k=1;k<nfad;k++) { sub=j*nfsb*nfad+i*nfad+k; pr=sub+nfad-1;
        x=kf*(1-f2sr[i])*isot[sub]-kr*isot[pr]*f2sr[i];
-       disot[pr] +=x; disot[sub] -=x; sum +=x;     }
-   return sum; }
-
-  double fadros(const double kf) {
-   double x, sum(0); int ox,red, sub, pr;
-   for(int j=0;j<nq;j++)	
-     for(int i=0;i<(nfsb);i++)
-       for(int k=1;k<nfad;k++) { sub=j*nfsb*nfad+i*nfad+1; pr=sub-1;
-       x=kf*isot[sub];
        disot[pr] +=x; disot[sub] -=x; sum +=x;     }
    return sum; }
 
@@ -150,19 +143,36 @@ class cII:public Metab{
         xr=kr*(1.-pbred[i-1])*isot[iprod]; x=xf-xr;
 	disot[iprod] +=x; disot[isub] -=x; sum +=x;
 		}}
-		return sum; }
+   return sum; }
+
+  double getfs() {
+    double sum=0.; int j=0;
+      for(int j=0;j<nq;j++)	
+        for(int i=0;i<(nfsb);i++) { int cfs=j*nfsb*nfad+i*nfad+1;
+          sum +=isot[cfs]; }
+    return sum;}
+
+  double fadros(const double kf) {
+   double x, sum(0); int sub, pr;
+   for(int j=0;j<nq;j++)	
+     for(int i=0;i<(nfsb);i++)
+       for(int k=1;k<nfad;k++) { sub=j*nfsb*nfad+i*nfad+1; pr=sub-1;
+       x=kf*isot[sub];
+       disot[pr] +=x; disot[sub] -=x; sum +=x;     }
+   return sum; }
 
   double getsq(){
     double sum=0.;
     for(int i=nfsb*nfad;i<2*nfsb*nfad;i++) sum += isot[i];
     return sum;}
 
-double getfs() {
-  double sum=0.; int j=0;
-  for(int j=0;j<nq;j++)	
-    for(int i=0;i<(nfsb);i++) { int cfs=j*nfsb*nfad+i*nfad+1;
-     sum +=isot[cfs]; }
-  return sum;}
+  double sqros(const double kf){
+    double x, sum=0.; int sub, pr;
+    for(int i=nfsb*nfad;i<2*nfsb*nfad;i++){
+       sub=i; pr=sub-nfsb*nfad;
+       x=kf*isot[sub];
+       disot[pr] +=x; disot[sub] -=x; sum +=x;} 
+    return sum;}
 
 double qhdiss1(cII& cr,double& qh,const double kf,const double kr,double cr11) {
    double x, sum=0.; int i1;
@@ -301,7 +311,7 @@ double qpdiss(cIII& bc1,double& q, const double kf,const double kr) {
 		 }
 	return sum;
 	}	
-double shiftFeS(const double kf,const double kr,const double kfb,const double krb,const double kros,const double o2,double& so) { 
+double shiftFeS(const double kf,const double kr,const double kfb,const double krb,const double kros,const double o2,double& so, double xc3) { 
   int i2; double x, sum=0.;
    for(int i=0;i<ml;i++)
      if ((map[i]&7)==3) { i2=fndmap(map[i]+2);
@@ -314,7 +324,7 @@ double shiftFeS(const double kf,const double kr,const double kfb,const double kr
 	}//shift in qh.-bound from pos.1 to pos.5(cytBl)
       else if ((map[i]&19)==17) { i2=fndmap(map[i]-1);
 	x = kros*o2*isot[i];
-	disot[i] -=x;   disot[i2] += x;	so += x;
+	disot[i] -=x;   disot[i2] += x;	so += x*xc3;
 	}//reducing of molecular oxygen
    return sum;
 }
@@ -335,6 +345,7 @@ class Parray{
    void wstorefl (const char fn1[],int numpar,const double** m);
    void readst();
    std::string fln[22];
+   std::vector<std::string> comm;
    double fstore[22];
 public:
    int i99,i95,i90,i68;
@@ -374,32 +385,43 @@ class Ldistr {
         cI cIq;
         cII coreII;
         cII cIIq;
-       double dpdt, cr11, bc15,qq, hfi, hfo,sp1,sn1,sp3,sn3, nadh,fsq,ros,sq1, Vresp;
+       double dpdt, cr11, bc15,qq, hfi, hfo,sp1,sn1,sp3,sn3, nadh,adp,fsq,ros,sq1, Vresp;
        double fmnh[8],fs[8],fmn[8], n5red[8], n6ar[4], n2red[4];
        double f2s[5],br[5];
        double fesr[3],c1r[3], bhr[4],sqi[4],qhi[4];
-       const double c1t,c2t, c3t,vol, buf, fc, frt, tan, tnad,qt,ho,hi;
+       const double c1t,c2t, c3t,vol, buf, fc, frt, tan, tnad, tnadc,qt,ho,hi;
        double tshift,tex[599],ex1[2][599],sdev[599];
        int nmet, iter,ifin1,ifin2;
        double *dconc;
        double *conc;
        double leak(double kf){return kf*exp(frt*conc[npsi])*(ho - hi);}
-       void setdisot(double *pyinit);
        double MM(double vm,double km,double s){return (vm*s/(km+s));}
 public:
        double pal,pa,pv,vo2b;
        Parray nv;
        std::string kkin, kont;
+       void setdisot(double *pyinit);
        void setisot(double *pyinit);
        void chast(double *py,double tint);
        double getc3ros(){return pBC1q.percent(3,1);}
        double getc2ros(){return (coreII.getfs() + cIIq.getfs());}
+	void transition(double kptp);
 int ddisolve(int istart,const double tfin, double *py,std::ostringstream& fkin);
 double fiout(double t, std::ostringstream& fi,int ii=1);
 double o2deliv(double pm);
 double rotenone(double *py,double tint);
 double antimycin(double *py);
 float efit(double *py);
+void ions(int nci,double P);
+double jglu0();
+void glufl();
+void atpsyn(double katp);
+void atpase(double katp);
+void NaKatpase(double katp);
+double gluout(double kio,double cglu){ return kio*(cglu-conc[ngluo]);}
+void glycolysis();
+void shutl();
+void peroxidase(double k);
 	void tout(int, int&, std::ofstream&);
 	void priout();
         int setny();
@@ -422,7 +444,7 @@ float efit(double *py);
 		conc[np] = a; return b;}
        void setarrays();
        double getros(){return ros;}
-    Ldistr():pBC1q(256), qhpBC1(64), BC1qn(64), BC1(15),coreI(15), cIq(48), c1t(0.204), coreII(11), cIIq(36), c2t(0.4), c3t(0.444), qt(7.1), hi(5.4e-05), ho(0.000114), vol(100.), buf(1000000.), fc(500.), frt(0.039), tan(1.), tnad(17.0){}
+    Ldistr():pBC1q(256), qhpBC1(64), BC1qn(64), BC1(15),coreI(15), cIq(48), c1t(0.204), coreII(11), cIIq(36), c2t(0.4), c3t(0.444), qt(4.1), hi(5.4e-05), ho(0.000114), vol(100.), buf(1000000.), fc(500.), frt(0.039), tan(20.), tnad(20.0), tnadc(17.0){}
      ~Ldistr(void) {}
 };
 }

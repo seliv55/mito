@@ -10,10 +10,10 @@
 using namespace std;
 using namespace Label;
 //parameters:
-const int qp_FS(0), rqp_FS(qp_FS+1), FS_c1(rqp_FS+1), rFS_c1(FS_c1+1), qp_bl(rFS_c1+1), rqp_bl(qp_bl+1), bl_bh(rqp_bl+1), rbl_bh(bl_bh+1), bh_qn1(rbl_bh+1), rbh_qn1(bh_qn1+1), bh_qn2(rbh_qn1+1), rbh_qn2(bh_qn2+1), qHbnd(rbh_qn2+1), rqHbnd(qHbnd+1), qnbnd(rqHbnd+1), rqnbnd(qnbnd+1), qpdis(rqnbnd+1), rqpdis(qpdis+1), qhnds(rqpdis+1),rqhnds(qhnds+1), vc1c(rqhnds+1),bypas(vc1c+1), c2ros(bypas+1), vfadf(c2ros+1), vfadr(vfadf+1), vbq1(vfadr+1), vrbq1(vbq1+1), vbq2(vrbq1+1), vrbq2(vbq2+1), vqdis(vrbq2+1), vrqdis(vqdis+1), vqbind(vrqdis+1), vrqbind(vqbind+1), vfred(vrqbind+1), vrfred(vfred+1), vn56(vrfred+1), vrn56(vn56+1), vn2qn1(vrn56+1), vrn2qn1(vn2qn1+1), vn2qn2(vrn2qn1+1), vrn2qn2(vn2qn2+1), vndis(vrn2qn2+1), vrndis(vndis+1), vpbind(vrndis+1), vrpbind(vpbind+1), vros(vrpbind+1), vlk(vros+1), vatsyn(vlk+1), vtca(vatsyn+1), vmdh(vtca+1), vatase(vmdh+1), vox(vatase+1),vsuc_i(vox+1),vme(vsuc_i+1),vsuoa(vme+1),vpyrTr(vsuoa+1), vsucmal(vpyrTr+1), vcs(vsucmal+1), rct(vcs+1),ntmax(rct+1),ksdh(ntmax+1),kq(ksdh+1),cmal_o(kq+1), katase(cmal_o+1), pyr_o(katase+1), suc_o(pyr_o+1), oaa_o(suc_o+1), nNV(oaa_o+1);
+const int qp_FS(0), rqp_FS(qp_FS+1), FS_c1(rqp_FS+1), rFS_c1(FS_c1+1), qp_bl(rFS_c1+1), rqp_bl(qp_bl+1), bl_bh(rqp_bl+1), rbl_bh(bl_bh+1), bh_qn1(rbl_bh+1), rbh_qn1(bh_qn1+1), bh_qn2(rbh_qn1+1), rbh_qn2(bh_qn2+1), qHbnd(rbh_qn2+1), rqHbnd(qHbnd+1), qnbnd(rqHbnd+1), rqnbnd(qnbnd+1), qpdis(rqnbnd+1), rqpdis(qpdis+1), qhnds(rqpdis+1),rqhnds(qhnds+1), vc1c(rqhnds+1), bypas(vc1c+1), vros(bypas+1), vfadf(vros+1), vfadr(vfadf+1), vbq1(vfadr+1), vrbq1(vbq1+1), vbq2(vrbq1+1), vrbq2(vbq2+1), vqdis(vrbq2+1), vrqdis(vqdis+1), vqbind(vrqdis+1), vrqbind(vqbind+1), vfred(vrqbind+1), vrfred(vfred+1), vn56(vrfred+1), vrn56(vn56+1), vn2qn1(vrn56+1), vrn2qn1(vn2qn1+1), vn2qn2(vrn2qn1+1), vrn2qn2(vn2qn2+1), vndis(vrn2qn2+1), vrndis(vndis+1), vpbind(vrndis+1), vrpbind(vpbind+1), ptp(vrpbind+1), vlk(ptp+1), vatsyn(vlk+1), vatpase(vatsyn+1), vGl(vatpase+1), vldh(vGl+1), vlacdif(vldh+1), vcI(vlacdif+1), vsdh(vcI+1), vcIII(vsdh+1), vcs(vcIII+1), vmalic(vcs+1), akgsuc(vmalic+1), vmdh(akgsuc+1), vasp_atf(vmdh+1), vasp_atr(vasp_atf+1), vaspout(vasp_atr+1), vK(vaspout+1), vglu_akg(vK+1), vglu_tr(vglu_akg+1), vgluout(vglu_tr+1),  katase(vgluout+1), vperos(katase+1), rct(vperos+1), ntmax(rct+1), glu_o(ntmax+1), laco(glu_o+1), k_o(laco+1), Na_o(k_o+1), nNV(Na_o+1);
 
 //concentrations:
-const int nqh(0), npsi(nqh+1), nnad(npsi+1), npyr(nnad+1), nsuc(npyr+1), nfum(nsuc+1), noaa(nfum+1), ncit(noaa+1), nc1c(ncit+1), nca(nc1c+1), nc2ros(nca+1), nc3ros(nc2ros+1), numx(nc3ros+1);
+const int nqh(0), npsi(nqh+1), nnad(npsi+1), npyr(nnad+1), nsuc(npyr+1), nfum(nsuc+1), noaa(nfum+1), nakgm(noaa+1), nglu(nakgm+1), ngluo(nglu+1), naspm(ngluo+1), nAtp(naspm+1), neo(nAtp+1), nlac(neo+1), numx(nlac+1), nca(nlac+1),nk_i(naspm+1), nc1ros(nca+1), nc2ros(nc1ros+1), nc3ros(nc2ros+1);
 //fluxes:
 const int fsdh(0), fsm(fsdh+1), fc1c(fsm+1), fme(fc1c+1), fpyrt(fme+1), fcs(fpyrt+1), ftca(fcs+1), fuoa(ftca+1), fatps(fuoa+1), flk(fatps+1), fbp(flk+1), fc1(fbp+1), fc2(fc1+1), flkc1(fc2+1), nflx(flkc1+1);
 
@@ -24,10 +24,11 @@ double Parray::frw[nNV];
 
 void Parray::stflx(){for(int i=0;i<nflx;i++) fstore[i]=flx[i];}
 void Parray::read(const char fn[],bool flg){
-	int i;
+	int i; string sss;
 	char com[30]; cout<<fn<<endl;
 	ifstream fi(fn);
-        for (i=0;i<nNV;i++) fi>>com>>pname[i]>>nv[i]>>com;
+        for (i=0;i<nNV;i++) {fi>>com>>pname[i]>>nv[i]; getline(fi,sss);
+                       comm.push_back(sss);}
 	for(i=1;;i++) {fi>>par[i]; if(par[i]<0){i68= par[i]*(-1); break;}}
 	par[0]=i;
 	fi >> tf >> xi1 >> xi2;
@@ -49,7 +50,7 @@ void Parray::write (int& fnum,double xi,bool flg) const {
 	   checkfi.close();
    }
         ofstream fi(fn);
-for (i=0;i<nNV;i++) fi<<i<<" "<<pname[i]<<" "<<nv[i]<<" "<<"  //"<<endl;
+for (i=0;i<nNV;i++) fi<<i<<" "<<pname[i]<<" "<<nv[i]<<" "<<comm[i]<<'\n';
   for (i=1; i<par[0]; i++) fi << par[i]<<" "; fi<<(i68*(-1))<< endl;
 	fi << tf <<" "<<xi<<" "<<xi<<endl;
        for (i=0;i<nflx;i++) fi<<i<<" "<<fln[i]<<" "<<flx[i]<<" "<<fstore[i]<<endl;
@@ -64,10 +65,12 @@ void Parray::st2nv(double st[]){ int i;
         
 void Parray::stat(const int NP ){
         Vec_DP a(NP), x1(NP), x2(NP); Vec_INT b(NP),t(NP);
-        int i, *pb=&b[0]; char fn[15];
+        int i, *pb=&b[0];
+        stringstream fn;
  for ( i=1;i<=NP;i++) {b[i-1]=i;
-	 sprintf(fn,"%i",i);
-       read(fn); t[i-1]=tf; x1[i-1]=xi1; x2[i-1]=xi2; a[i-1]=(0.*xi1+xi2);
+         fn.str(std::string());
+	 fn<<i;
+       read(fn.str().c_str()); t[i-1]=tf; x1[i-1]=xi1; x2[i-1]=xi2; a[i-1]=(0.*xi1+xi2);
  }
         NR::sort2a(a,b); cout<<"chi min="<<a[0]<<endl;
         cout << "After sorting, Parameter file (xi2) are:" << endl;
@@ -93,16 +96,19 @@ if ((i%3)==0) cout<<endl;
 	    }
 int chr=NP;//i99;
  for (i=0;i<chr;i++) {
-	sprintf(fn,"mv %i %ia",b[i],i+1);
-		int is=system(fn);
+       fn.str(std::string());
+       fn<<"mv "<<b[i]<<" "<<i+1<<"a";
+		int is=system(fn.str().c_str());
 	}
  for (i=chr;i<NP;i++) {
-	sprintf(fn,"rm %i",b[i]);
-		int is=system(fn);
+       fn.str(std::string());
+       fn<<"rm "<<b[i];
+		int is=system(fn.str().c_str());
 	}
  for (i=0;i<chr;i++) {
-	sprintf(fn,"mv %ia %i",i+1,i+1);
-		int is=system(fn);
+       fn.str(std::string());
+       fn<<"mv "<<i+1<<"a "<<i+1;
+		int is=system(fn.str().c_str());
 	}
 readst();
 	cout<<"selected " <<i99<<" from "<<NP<<endl;

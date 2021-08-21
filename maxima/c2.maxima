@@ -5,12 +5,16 @@ F:96500,
 R:8.3,
 T:298,
 frt:F/(R*T),
-/*−60 to −79: FAD,
- +10:  [2Fe-2S],
- −175: [4Fe-4S],
+/* Moser, 2006
+ −127: FAD, 1st reduction
+ −31: FAD, 2d reduction
+ +0 to +10:  [2Fe-2S],
+ −175 to -260: [4Fe-4S],
  +65:  [3Fe-4S],
- +36:  heme b,
- +90:  ubiquinone*/
+ -185:  heme b,
+ +96:  ubiquinone, 1st reduction
+ +172:  ubiquinone, 2d reduction
+ */
  
  dfh_f2s: 0.090, /*ΔE: fadh + f2so <-> fads + f2sr */
  df_f2s: 0.090, /*ΔE: fads + f2so <-> fad + f2sr */

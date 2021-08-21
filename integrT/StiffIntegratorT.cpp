@@ -7,7 +7,7 @@
  ***************************************************************************/
 
 #include "StiffIntegratorT.h"
-#include "nums.hh"
+//#include "nums.hh"
 
 // Constructor
 StiffIntegratorT::StiffIntegratorT(const int nin, double yin[], double xin, double xendin,
