@@ -1,0 +1,44 @@
+ratprint: false$
+keepfloat:true$
+
+toi():= ([
+/* k1=2e7/(M*s) = 2e4/(mM*s), k01=50/s, z=0, Kglu=k01/k1=0.0025 mM*/
+kt: 14, /*/s, k0t=14/s, z=0.7,*/
+k02: 200, /*/s, z=1.5,*/
+kr: 20, /*/s, z=-1,*/
+kss: 7.9, /*/s, z=2,*/
+KN1: 50, /* mM, z=0.3,*/
+KN2: 8.4, /*, mM, z=0.5;*/
+KN3: 8.4,
+Kglu: 0.0025,
+
+eq1: KN1 - T*Na/NT,
+eq2: Kglu - NT*Glu/NTG,
+eq3: KN2 - NTG*Na/N2TG,
+eq4: KN3 - N2TG*Na/N3TG,
+eq5: To - T - NT - NTG - N2TG - N3TG],
+sol:solve([eq1,eq2,eq3,eq4,eq5],[T,NT, NTG, N2TG, N3TG]), sol)$
+
+sol: toi();
+fortran(sol);
+fpprintprec: 5$ write_data(sol,"soloi")$
+
+tio():= ([
+/* k1=2e7/(M*s) = 2e4/(mM*s), k01=50/s, z=0, Kglu=k01/k1=0.0025 mM*/
+KN1: 50, /* mM, z=0.3,*/
+KN2: 50, /*, mM, z=0.5;*/
+KN3: 50,
+Kglu: 200,
+
+eq1: KN1 - T*Na/NT,
+eq2: KN2 - NT*Na/N2T,
+eq3: Kglu - N2T*Glu/N2TG,
+eq4: KN3 - N2TG*Na/N3TG,
+eq5: Ti - T - NT - N2T - N2TG - N3TG],
+sol:solve([eq1,eq2,eq3,eq4,eq5],[T,NT, N2T, N2TG, N3TG]), sol)$
+
+sol: tio();
+fortran(sol);
+fpprintprec: 5$
+write_data (sol,"solio")$
+

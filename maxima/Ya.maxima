@@ -1,0 +1,45 @@
+ratprint: false$
+keepfloat:true$
+
+toi():= ([
+KoK: 12500,
+eq0: KoK - T*K/TK,
+KoN1: 250,
+eq1: KoN1 - T*Na/NT,
+KoN2: 250,
+eq2: KoN2 - NT*Na/N2T,
+KoH: 1.2e-6, Ho: 3.0e-5,
+eq3h: KoH - N2T*Ho/N2TH,
+KoGlu: 0.044,
+eq3: KoGlu - N2TH*Glu/N2THG,
+KoN3: 100,
+eq4: KoN3 - N2THG*Na/N3THG,
+eq5: To - TK - T - NT - N2T - N2TH - N2THG - N3THG],
+sol:solve([eq0,eq1,eq2,eq3h,eq3,eq4,eq5],[TK,T,NT, N2T, N2TH, N2THG, N3THG]), sol)$
+
+sol: toi();
+fortran(sol);
+fpprintprec: 5$
+write_data(sol,"soloi")$
+
+tio():= ([
+KiK: 1,
+eq0: KiK - T*K/TK,
+KiN1: 4,
+eq1: KiN1 - T*Na/NT,
+KiN2: 2.5,
+eq2: KiN2 - NT*Na/N2T,
+KiGlu: 7.7,
+eq3: KiGlu - N2T*Glu/N2TG,
+KiH: 6.7e-5, Hi: 5.0e-5,
+eq3h: KiH - N2TG*Hi/N2TGH,
+KiN3: 20,
+eq4: KiN3 - N2TGH*Na/N3TGH,
+eq5: Ti - TK - T - NT - N2T - N2TG -N2TGH - N3TGH],
+sol:solve([eq0,eq1,eq2,eq3,eq3h,eq4,eq5],[TK, T,NT, N2T, N2TG,N2TGH, N3TGH]), sol)$
+
+sol: tio();
+fortran(sol);
+fpprintprec: 5$
+write_data (sol,"solio")$
+

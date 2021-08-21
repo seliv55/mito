@@ -1,0 +1,16 @@
+>> test_f14eq_equilib_integ_a
+Now showing plot from t = 0 to t = time_to_converge_to_equilibrium
+Press enter to continue or ctrl-c to abort
+              :  p(1)              point norm       curve func norm  step size
+  1   1    00 :  +1.000000e-02     3.742085e+00     2.505650e-09     5.000000e+00
+Lyapunov Coefficient = 4.217764e-01
+ 10   2    H  :  +4.693693e-02     2.720995e+01     2.753073e-10     1.092774e+00
+ 13   3    LP :  +4.709998e-02     2.811350e+01     5.659239e-11     1.400296e-01
+Lyapunov Coefficient = 2.423974e-01
+ 15   4    H  :  +4.707574e-02     2.834160e+01     1.151075e-09     1.878547e-01
+144   5    BP :  +3.231402e-05     4.717490e+00     3.076216e-13     8.243087e-01
+150   6    LP :  +9.058749e-06     6.113186e+00     1.354517e-13     9.432982e-03
+2000   7    99 :  +1.024963e-01     1.270476e+04     6.233925e-11     7.000000e+00
+
+Elapsed time  = 13.6 secs
+Number of Points = 2000
