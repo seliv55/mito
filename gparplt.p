@@ -1,11 +1,10 @@
 #set size 0.65,0.65;
-set t pngcairo enhanced dashed font "arial,12" size 900,61.8*6;
-#set t svg enhanced dashed font "arial,10" size 600,61.8*3;
-set output "cont.png";
+#set t pngcairo enhanced dashed font "arial,12" size 900,61.8*6; set output "cont.png";
+set t svg enhanced dashed font "arial,12" size 708,61.8*5; set output "cont.svg";
 set multiplot layout 1,2
 set style line 1 lt 1 lw 1.5 lc rgb "#3465a4"
 set style line 2 lt 1 lw 1.5 lc rgb "#f57900"
-set xlabel "glutamate (mM)" offset 0,0.7;
+set xlabel "Glutamate (mM)" offset 0,0.7;
 fac=1.000;
 set xrange [0.:0.06]
 set yrange [-0.1:*]
@@ -26,11 +25,11 @@ set yrange [0:*]
 #set ytics 20;
 #set label 1 "B"
 set label 1 "A" at graph 0.05,1.0 font "arial,12"
-set label 2 "functional states" at graph 0.25,0.5 rotate by 25 
+set label 2 "functional states" at graph 0.25,0.5 rotate by 28 
 set label 3 "signaling states" at graph 0.25,0.95 
-set label 4 "unstable states" at graph 0.25,0.87  rotate by -7
-set ylabel "QH_2/(pool size)" offset 2;
-plot '00000' using ($1/fac):qh w p ls 2 t"IVP", "mex/curveT.txt" u 15:($1/2.4) w l ls 1 t"MatContL", "../mark/noPTP/LP" u 7:($1/2.4) w p ps 1 pt 7 t"LP", "../mark/noPTP/hopf" u 7:($1/2.4) w p ps 1 lt 7 t"Hopf"
+set label 4 "unstable states" at graph 0.25,0.857  rotate by -7
+set ylabel "QH_2  fraction" offset 2;
+plot '00000' using ($1/fac):qh w p ls 2 t"IVP", "mex/curveT.txt" u 15:($1/2.4) w l ls 1 t"MatContL", "../mark/noPTP/LP" u 7:($1/2.4) w p ps 1 lt 9 t"LP", "../mark/noPTP/hopf" u 7:($1/2.4) w p ps 1 lt 6 t"Hopf"
 #set ylabel "ROS in C2, nM" offset 2;
 #plot '00000' using ($1/fac):rosc2 w l ls 2 not;
 #set yrange [-0.1:*]
@@ -41,11 +40,11 @@ plot '00000' using ($1/fac):qh w p ls 2 t"IVP", "mex/curveT.txt" u 15:($1/2.4) w
 set yrange [-5:*]
 #set ytics 100;
 set label 1 "B"
-set label 2 at graph 0.3,1.0 rotate by -20
+set label 2 at graph 0.3,1.01 rotate by -25
 set label 3 "signaling" at graph 0.8,0.07 
 set label 4 "unstable" at graph 0.57,0.07 rotate by 0
 #set label 1 "D"
-set ylabel "Ψ(var2, mV)" offset 2;
-plot '00000' using ($1/fac):psi  w p ls 2 t"IVP", "mex/curveT.txt" u 15:($2*118.) w l ls 1 t"MatContL", "../mark/noPTP/LP" u 7:($2*118.) w p ps 1 pt 7 t"LP", "../mark/noPTP/hopf" u 7:($2*118.) w p ps 1 lt 7 t"Hopf"#, '00000' using ($1/fac):psi w l ls 1 not;
+set ylabel "ΔΨ (mV)" offset 2;
+plot '00000' using ($1/fac):psi  w p ls 2 t"IVP", "mex/curveT.txt" u 15:($2*118.) w l ls 1 t"MatContL", "../mark/noPTP/LP" u 7:($2*118.) w p ps 1 lt 9 t"LP", "../mark/noPTP/hopf" u 7:($2*118.) w p ps 1 lt 6 t"Hopf"#, '00000' using ($1/fac):psi w l ls 1 not;
 #, '00000' using ($1/fac):eflow w l ls 1 not;
 

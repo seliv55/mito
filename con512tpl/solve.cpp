@@ -70,8 +70,8 @@ void Ldistr::chast(double *py, double tint) {
 //  double a6=nv.setval(qHbnd, 0.0000);//myxothiazol
 //  ifin1= ddisolve(ifin1,3.0,py,fkin);
 //  double a5=nv.setval(vgluout, 0.); // glutamate
-//  ifin1= ddisolve(ifin1,100.0,py,fkin);
-//  nv.setval(glu_o, 0.04);
+  ifin1= ddisolve(ifin1,100.0,py,fkin);
+  nv.setval(glu_o, 0.01);
 //  double a1=nv.setval(qnbnd, 0.0);//antimycine
 //  ifin1=ddisolve(ifin1,4.0,py,fkin);
 //  double a6=nv.setval(qHbnd, 0.0000);//myxothiazol
