@@ -8,7 +8,7 @@ extern int nrhs;   // counts function evaluations
 extern time_t ts,tf,tcal,tfirst;
 extern void derivsl(const DP x, Vec_IO_DP &y, Vec_O_DP &dydx);
 extern double integrbs(const double tmax,Vec_DP &ystart,const int);
-double tisolve(const double tmax,double *y,int,ostringstream& fkin);
+double tisolve(const double tmax,double *y,int);
 extern void pardep(Vec_DP &ystart,float ,bool flg=false);
 extern double comb(double *py, int wr=0);
 

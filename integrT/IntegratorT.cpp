@@ -87,29 +87,26 @@ IntegratorT::~IntegratorT()
 // Modify this routine according to your needs
 int IntegratorT::SolutionOutput()
 {
-//static std::ostringstream fout;
-////	fout<<"t h6p= glgn= fbp= nt3= h6a= pep= pyr= oaa= mal= cit= coa= p5= e4= s7="<<std::endl;
-////	std::cout << std::setiosflags(std::ios::showpoint);// | ios::fixed);
+static std::ostringstream fout("kinetics");
+//	fout<<"t h6p= glgn= fbp= nt3= h6a= pep= pyr= oaa= mal= cit= coa= p5= e4= s7="<<std::endl;
+//	std::cout << std::setiosflags(std::ios::showpoint);// | ios::fixed);
 
-//	if (naccpt == 0) xd = xold;
+	if (naccpt == 0) xd = xold;
 
-//	while (xd <= x) 
-//		if (xold <= xd)  {/*fout <<xd<<" ";
-//			std::cout << "Step " << naccpt << ": t = " << std::setw(5) <<
-//				std::setprecision(2) << x << "  y = ";
-//			for (unsigned i = 0; i < n; i++)
-//				std::cout << std::setw(10) << std::setprecision(8)
-//				
-//for (unsigned i = 0; i < n; i++) fout << ContinuousOutput(i) << "  ";
-//			fout << std::endl;*/
-//			static int i(0);
-////			double tfac=2100.;
-//     horse.fiout(xd,fout,i);
-//     xold=xd;
-//			xd += dx;
-//		}
-//static std::ofstream fo("kinetics");
-//fo<<fout.str();
+	while (xd <= x) 
+		if (xold <= xd)  {/*fout <<xd<<" ";
+			std::cout << "Step " << naccpt << ": t = " << std::setw(5) <<
+				std::setprecision(2) << x << "  y = ";
+			for (unsigned i = 0; i < n; i++)
+				std::cout << std::setw(10) << std::setprecision(8)
+				
+for (unsigned i = 0; i < n; i++) fout << ContinuousOutput(i) << "  ";
+			fout << std::endl;*/
+			static int i(0);
+//			double tfac=2100.;
+     horse.fiout(xd,fout,i);
+			xd += dx;
+		}
 	
 
 	return 0;

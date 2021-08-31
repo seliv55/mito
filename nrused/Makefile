@@ -1,8 +1,8 @@
 all: nr.a
 .cpp.o: 
-	g++ -c -O2 -I../include $*.cpp
+	g++ -c -O3 -I../include $*.cpp
 
-OBJECTS = odeint.o pythag.o pzextr.o ludcmp.o lubksb.o rkqs.o rkck.o stifbs.o stiff.o simprsparse.o bsstep.o mmid.o sort2a.o svbksb.o svdcmp.o mprove.o
+OBJECTS = odeint.o pythag.o pzextr.o ludcmp.o lubksb.o rkqs.o rkck.o stifbs.o stiff.o simprsparse.o bsstep.o mmid.o sort2a.o
 
 SPARSE = sprsin.o sprsax.o sprstx.o asolve.o atimes.o snrm.o linbcg.o
 
@@ -48,13 +48,11 @@ snrm.o: snrm.cpp
        
 linbcg.o: linbcg.cpp
 
+#ludcmp.o: ludcmp.cpp
+       
+#lubksb.o: lubksb.cpp
+
 sort2a.o: sort2a.cpp
-
-svdcmp.o: svdcmp.cpp
-
-svbksb.o: svbksb.cpp
-
-mprove.o: mprove.cpp
 
 clean:	
 	rm -f *.o nr.a

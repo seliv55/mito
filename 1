@@ -1,90 +1,93 @@
-0 0qp_FS 8       //👁️COMPLEX 3(pars 0-22), 0: QH2@Qp -> FeS (Rieske protein)
-1 rqp_FS 18        // FeS (Rieske protein) -> QH2@Qp
-2 1FS_c1 350       // FeS (Rieske protein) -> cyt c1
-3 rFS_c1 1500      // cyt c1 -> FeS (Rieske protein)
-4 2qp_bl 2500      // Q-@Qp -> cyt bL
-5 rqp_bl 71        // cyt bL -> Q-@Qp
-6 3bl_bh 900       // cyt bl -> cyt bH
-7 rbl_bh 8.35      // cyt bH -> cyt bl
-8 4bh-qn1 5000     // cyt bH -> Q@Qn
-9 rbh-qn1 7400     // Q-@Qn -> cyt bH
-10 5bh_qn2 5e+12        // cyt bH -> QH@Qn
-11 rbh_qn2 1000         // QH2@Qn -> cyt bH
-12 6qHbnd 5.31969       // Qp + QH2 free -> QH2@Qp
-13 rqHbnd 4.92438       // QH2@Qp ->  Qp + QH2 free
-14 7qnbnd 24.1563       // Qn + Q free -> Q@Qn
-15 rqnbnd 0.343086      // Q@Qn ->  Qn + Q free
-16 8qpdis 6.71485       // Q@Qp ->  Qp + Q free
-17 rqpdis 1.40863       // Qp + Q free -> Q@Qp
-18 9qhnds 7.17725       // QH2@Qn ->  Qn + QH2 free
-19 rqhnds 13.1662       // Qn + QH2 free -> QH2@Qn
-20 vc1c 1.48978         // cyt c1 -> cyt c
-21 bypas 0       // not used
-22 vros 1e-07       //👁️COMPLEX 2(pars 22-32), 22: QH@Qp -> O2, FADH -> O2
-23 vfadf 0.000931     // suc -> FAD
-24 vfadr 4.1         // FAD -> suc
-25 vb-Q1 25          // 3Fe4S -> cIIQ
-26 vrb-Q1 0.5        // cIIQ -> 3Fe4S
-27 vbQ2 35           // 3Fe4S -> cIIQH
-28 vrbQ2 0.5         // cIIQH2 -> 3Fe4S
-29 vQdis 20          // cIIQH2 -> cII + QH2 free
-30 vrQdis 10         // cII + QH2 free -> cIIQH2
-31 vQbind 30         // cII + Q free -> cIIQ
-32 vrQbind 10        // cIIQ -> cII + Q free
-33 vfmnred 0.1      //👁️COMPLEX 1(pars 33-44), 33: NADH -> FMN
-34 vrfmn 4444        // FMN -> NADH
-35 vn56 8.93369      // FMN -> N2
-36 vrn56 15.2253     // N2 -> FMN
-37 vn2-Qn1 116.351      // N2 -> cIQ
-38 vrn2-Qn1 161.335     // cIQ -> N2
-39 vn2Qn2 973.389       // N2 -> cIQH
-40 vrn2Qn2 284.016      // cIQH -> N2
-41 vQndis 41.4094       // cIQH2 -> cI + QH2
-42 vrQndis 12.7863      // cI + QH2 -> cIQH2
-43 vQpbind 21.625       // cI + Q -> cIQ
-44 vrQpbind 6.28562     // cIQ -> cI + Q
-45 ptp 0 		// PTP
-46 vlk 0 		//👁️ various
-47 vatsyn 0.001 	// ADP -> ATP
-48 vatpase 1.9e-04 	// ATP -> ADP
-49 vGl 0.001 		// glucose input
-50 vldh 0.001 		// pyr<-> lac
-51 vlacdif 0.0001 	// lac out <-> lac in
-52 vcI 0.0001 		// NADH+q <-> NAD+qh
-53 vsdh 0.004 		// suc+q <-> fum+qh
-54 vcIII 0.004 		// qh+q <-> 2q
-55 vcs 0.07 		// **Krebs: pyr + oaa -> cit
-56 vmalic 0.0005  		// oaa -> pyr
-57 akgsuc 0.01 		// akg -> suc
-58 vmdh 0.9 		// mal -> oaa
-59 vasp_atf 0.45 	// oaa + glu -> asp + akg
-60 vasp_atr 0.1 	// oaa + glu <- asp + akg
-61 vaspout 0.03 		// asp efflux
-62 vK 0.001 		// ** K+ in -> K+ out
-63 vglu_akg 0.0001 	// Glu -> akg
-64 vglu_tr 0.33 	// Glu out -> Glu 
-65 vgluout 0.075 	// spilover
-66 kATPase 0.001 	// K/Na ATPase
-67 vperos 0		// peroxidase
-68 rct 1000         // V max factor
-69 tfac 97         // time factor
-70 glu_o 0.06          // **Concentrations** outside glutamate
-71 laco 0.3              // outside lactate
-72 k_o 5               // outside K+
-73 Na_o 140            // outside Na+
+0 0qp_FS 8   //
+1 rqp_FS 18   //
+2 1FS_c1 350   //
+3 rFS_c1 1500   //
+4 2qp_bl 2500   //
+5 rqp_bl 71   //
+6 3bl_bh 900   //
+7 rbl_bh 8.35   //
+8 4bh-qn1 5000   //
+9 rbh-qn1 7400   //
+10 5bh_qn2 5e+12   //
+11 rbh_qn2 1000   //
+12 6qHbnd 5.31969   //
+13 rqHbnd 4.92438   //
+14 7qnbnd 24.1563   //
+15 rqnbnd 0.343086   //
+16 8qpdis 6.71485   //
+17 rqpdis 1.40863   //
+18 9qhnds 7.17725   //
+19 rqhnds 13.1662   //
+20 vc1c 1.48978   //
+21 bypas 0   //
+22 c2ros 7e-05   //
+23 vfadf 0.9315   //
+24 vfadr 4.1   //
+25 vb-Q1 25   //
+26 vrb-Q1 0.5   //
+27 vbQ2 35   //
+28 vrbQ2 0.5   //
+29 vQdis 20   //
+30 vrQdis 10   //
+31 vQbind 30   //
+32 vrQbind 10   //
+33 vfmnred 4111   //
+34 vrfmn 4444   //
+35 vn56 8.93369   //
+36 vrn56 15.2253   //
+37 vn2-Qn1 116.351   //
+38 vrn2-Qn1 161.335   //
+39 vn2Qn2 973.389   //
+40 vrn2Qn2 284.016   //
+41 vQndis 41.4094   //
+42 vrQndis 12.7863   //
+43 vQpbind 21.625   //
+44 vrQpbind 6.28562   //
+45 vros 7e-05   //
+46 vlk 0.4   //
+47 vatsyn 0.00   //
+48 vtca 5.6704   //
+49 vmdh 1.9   //
+50 vK 0.001   //
+51 vox 0.3   //
+52 vglu_suc 0.0001   //
+53 vatpase 0.00   //
+54 vglu_cel 0.1   //
+55 vptp 0.0   //
+56 vgluout 0.001   //
+57 vcs 0.7   //
+58 vasp_atf 5.1   //
+59 vasp_atr 0.0   //
+60 vGl 0.00005   //
+61 vldh 0.01   //
+62 vmalakg 0.1   //
+63 vgluasp 0.2   //
+64 vgluOH 0.000001   //
+70 kATPase 0.000   //
+71 vmdhc 0.101   //
+65 rct 250   //
+66 tmax 4000   //
+67 ksdh 0.5   //
+68 kq 0.5   //
+69 cmal_o 0   //
+72 suc_o 0.00   //
+73 glu_o 0.5   //
+74 laco 0.0   //
+75 k_o 5   //
+76 Na_o 140   //
 22 25 26 27 28 29 30 31 32 34 36 38 39 42 43 45 46 47 -18
-43019 1 1
-0 fsdh 4.65561 0
+4642085 1 1
+0 fsdh 0 0
 1 fsm 0 0
-2 fsuoa 5.552 0
+2 fsuoa 0.00021969 0
 3 fme 0 0
-4 fpyrt 0 0
-5 fcs 0.138564 0
-6 ftca 0 0
-7 fuoa 0 0
+4 fpyrt -44.5989 0
+5 fcs -1.05377e-18 0
+6 ftca 1.96498e-17 0
+7 fuoa 7.72301e-06 0
 8 fatps 0 0
-9 flk 0 0
+9 flk 5.45701e-07 0
 10 fatpa 0 0
-11 fc1 0 0
-12 0.00505971 0 0
+11 fc1 1.53682e-05 0
+12 0.00505971 0.000251059 0
 13 0 0 0
