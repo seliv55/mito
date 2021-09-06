@@ -104,3 +104,5 @@ electron fluxes in the mitochondrial respiratory chain. PLoS Comput Biol. 2011
 Multistationary and oscillatory modes of free radicals generation by the
 mitochondrial respiratory chain revealed by a bifurcation analysis. PLoS Comput
 Biol. 2012 8(9):e1002700.
+
+- Selivanov VA, Zagubnaya OA, Nartsissov YR, Cascante M. Unveiling a key role of oxaloacetate-glutamate interaction in regulation of respiration and ROS generation in nonsynaptic brain mitochondria using a kinetic model. PLoS One. 2021 Aug 3;16(8):e0255164. doi: 10.1371/journal.pone.0255164. PMID: 34343196; PMCID: PMC8330910.
