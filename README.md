@@ -9,7 +9,7 @@ Kinetic model of mitochondrial respiration linked with cellular energetic metabo
 
 ## Description
 
-The software tool “Mitodyn”, coded in C++,  supports an analysis of dynamics of mitochondrial and cellular energy metabolism. It is based on a kinetic model, i.e., a system of ordinary differential equations (ODE) that describes mitochondrial electron transport, biochemical reactions providing substrates for the electron transport, oxidative phosphorylation, ATP consumption and transport of some metabolites through the cellular and inner mitochondrial membranes. It is customized for the neuronal cells.
+The software tool “Mitodyn”, coded in C++,  supports an analysis of dynamics of mitochondrial and cellular energy metabolism. Here a reduced version of the "complete" model (branch "complete") is presented. The reactions implemented in this model are shown in the figure above figure The reduction consists in simplification of the equations describing the reactions catalized by respiratory complexes and reactions of malate-aspartate shutle.
 
 ## Key features
 
