@@ -1,15 +1,19 @@
 # Mitodyn
 Version: 1.0
 
-![Logo](RC.png)
-
 ## Short Description
 
 Kinetic model of mitochondrial respiration linked with cellular energetic metabolism and glutamate transport in neurons
 
 ## Description
 
-The software tool “Mitodyn”, coded in C++,  supports an analysis of dynamics of mitochondrial and cellular energy metabolism. Here a reduced version of the "complete" model (branch "complete") is presented. The reactions implemented in this model are shown in the figure above figure The reduction consists in simplification of the equations describing the reactions catalized by respiratory complexes and reactions of malate-aspartate shutle.
+The software tool “Mitodyn”, coded in C++,  supports an analysis of dynamics of mitochondrial and cellular energy metabolism. Here a reduced version of the "complete" model (branch "complete") is presented. The reactions implemented in this model are shown in Fig 1.
+
+![Fig 1](RC.png)
+
+Fig 1.The scheme of reactions implemented in the reduced model. Electron transport in each respiratory complex (CI, CII, CIII, CIV) in the model is reduced to one equation. The model also describes glycolysis (violet arrows), the Krebs cycle (blue arrows), oxidative phosphorylation (ATP syn), ATP consumption (orange arrows), glutamate transport and metabolism (green arrows).
+
+The reduction consists in simplification of the equations describing the reactions catalized by respiratory complexes and reactions of malate-aspartate shutle.
 
 ## Key features
 
