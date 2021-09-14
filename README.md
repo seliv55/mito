@@ -3,15 +3,15 @@ Version: 1.0
 
 ## Short Description
 
-Kinetic model of mitochondrial respiration linked with cellular energetic metabolism and glutamate transport in neurons. Here a reduced version of the "complete" model (branch "complete") is presented.
+A reduced version of the "complete" (branch "complete")Kinetic model of mitochondrial respiration linked with cellular energetic metabolism and glutamate transport in neurons.
 
 ## Description
 
-The software tool “Mitodyn”, coded in C++,  supports an analysis of mitochondrial and cellular energy metabolism dynamics. The scheme of reactions implemented in this model is shown in Fig 1.
+The software tool "Mitodyn", coded in C++,  supports an analysis of mitochondrial and cellular energy metabolism dynamics. The software's core is a kinetic model consisting of a large set of ordinary differential equations (ODEs) describing electron transport in the mitochondrial respiratory chain (RC) and linked biochemical reactions. The scheme of reactions implemented in this model is shown in Fig 1.
 
 ![Fig 1](RC.png)
 
-Fig 1.The scheme of reactions implemented in the reduced model. In the model, electron transport in each respiratory complex (CI, CII, CIII, CIV) is reduced to one equation. The model also describes glycolysis (violet arrows), the Krebs cycle (blue arrows), oxidative phosphorylation (ATP syn), ATP consumption (orange arrows), glutamate transport, and metabolism (green arrows).
+Fig 1.The scheme of reactions implemented in the reduced model. In the model, electron transport in each respiratory complex (CI, CII, CIII, CIV) is reduced to one equation. The model also describes glycolysis (violet arrows), the Krebs cycle (blue arrows), ATP consumption (orange arrows), glutamate transport, and metabolism (green arrows), oxidative phosphorylation ( yellow arrows). ATP synthase (ATPsyn) can be transformed to the permeability transition pore (PTP). This process causes MPT.
 
 The reduction consists in simplification of the equations describing the reactions catalyzed by respiratory complexes and reactions of the malate-aspartate shuttle.
 <p/> The model also implements a possibility of mitochondrial permeability transition (MPT), i.e., a sudden nonspecific increase of permeability of the inner mitochondrial membrane for various ions and molecules weighting <1.5 kDa.
