@@ -3,7 +3,7 @@ Version: 1.0
 
 ## Short Description
 
-A reduced version of the "complete" (branch "complete")Kinetic model of mitochondrial respiration linked with cellular energetic metabolism and glutamate transport in neurons.
+A reduced version of the "complete" (branch "complete") kinetic model of mitochondrial respiration linked with cellular energetic metabolism and glutamate transport in neurons.
 
 ## Description
 
@@ -11,7 +11,7 @@ The software tool "Mitodyn", coded in C++,  supports an analysis of mitochondria
 
 ![Fig 1](RC.png)
 
-Fig 1.The scheme of reactions implemented in the reduced model. In the model, electron transport in each respiratory complex (CI, CII, CIII, CIV) is reduced to one equation. The model also describes glycolysis (violet arrows), the Krebs cycle (blue arrows), ATP consumption (orange arrows), glutamate transport, and metabolism (green arrows), oxidative phosphorylation ( yellow arrows). ATP synthase (ATPsyn) can be transformed to the permeability transition pore (PTP). This process causes MPT.
+Fig 1.The scheme of reactions implemented in the reduced model. In the model, electron transport in each respiratory complex (CI, CII, CIII, CIV) is reduced to one equation. The model also describes glycolysis (violet arrows), the Krebs cycle (blue arrows), ATP consumption (orange arrows), glutamate transport, and metabolism (green arrows), oxidative phosphorylation ( yellow arrows). ATP synthase (ATPsyn) can be transformed to the permeability transition pore (PTP). The latter process causes MPT.
 
 The reduction consists in simplification of the equations describing the reactions catalyzed by respiratory complexes and reactions of the malate-aspartate shuttle.
 <p/> The model also implements a possibility of mitochondrial permeability transition (MPT), i.e., a sudden nonspecific increase of permeability of the inner mitochondrial membrane for various ions and molecules weighting <1.5 kDa.
@@ -40,7 +40,7 @@ The reduction consists in simplification of the equations describing the reactio
 
 ## Installation
 
--  To run Mitodyn it in local computer it is sufficient to copy (clone) the repository and compile the code.
+-  To run Mitodyn in local computer it is sufficient to copy (clone) the repository and compile the code.
 - The repository contains makefiles to compile the code using g++ compiler, which usually is installed by default in Linux operative systems. To use a different compiler the makefiles, which are located in root directory and other directories containing parts of the code ("con512tpl", "dasl", "integrT", "nrused") should be changed respectively.
 - To compile the code the following command should be executed:
 ```
