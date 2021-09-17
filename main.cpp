@@ -19,7 +19,7 @@ using namespace std;
 using namespace Label;
 extern vector<double> vx;
 Ldistr horse;
-const int NN=horse.setny(), numex=horse.readexp(2,"a011110rbm.txt");
+const int NN=horse.setny(), numex=100;//horse.readexp(2,"a011110rbm.txt");
 Vec_DP ystart(500);
 DP dxsav;   // defining declarations
 DP *yy0, *yy1;

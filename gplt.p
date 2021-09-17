@@ -1,5 +1,5 @@
-set t svg enhanced dashed font "arial,11" size 700,5*68; set output "kin/dynamics.svg";
-#set t pngcairo enhanced dashed font "arial,10" size 700,5*68; set output "kin/dynamics.png";
+#set t svg enhanced dashed font "arial,11" size 700,5*68; set output "kin/dynamics.svg";
+set t pngcairo enhanced dashed font "arial,10" size 700,5*68; set output "kin/dynamics.png";
 set xlabel "Time (s)" offset 0,0.7 font "arial,11";
 set xrange [0 to *]
 set style line 1 lt 1 lw 1.5 lc rgb "#3465a4"

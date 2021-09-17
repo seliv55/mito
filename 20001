@@ -52,7 +52,7 @@
 51 vlacdif 0.0001  	// lac out <-> lac in
 52 vcI 0.0001  		// NADH+q <-> NAD+qh
 53 vsdh 0.004  		// suc+q <-> fum+qh
-54 vcIII 0.004  		// qh+q <-> 2q
+54 vcIII 0.004 		// qh+q <-> 2q
 55 vcs 0.07  		// **Krebs: pyr + oaa -> cit
 56 vmalic 0.0005   		// oaa -> pyr
 57 akgsuc 0.01  		// akg -> suc
@@ -68,15 +68,15 @@
 67 vperos 0 		// peroxidase
 68 rct 1000          // V max factor
 69 tfac 97          // time factor
-70 glu_o 0.06           // **Concentrations** outside glutamate
+70 glu_o 0.01           // **Concentrations** outside glutamate
 71 laco 0.3               // outside lactate
 72 k_o 5                // outside K+
 73 Na_o 140             // outside Na+
 22 25 26 27 28 29 30 31 32 34 36 38 39 42 43 45 46 47 -18
-25533 1 1
+24887 1 1
 0 fsdh 0 0
 1 fsm 0 0
-2 fsuoa 5.981 0
+2 fsuoa 5.53778 0
 3 fme 0 0
 4 fpyrt 0 0
 5 fcs 0 0
