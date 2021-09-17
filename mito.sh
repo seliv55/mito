@@ -1,7 +1,7 @@
 #!/bin/sh
 #edata="../filesimid/files/mark2" #13C labeling 
-edata="a011110rbm.txt" #experimental data
-init="i0" #initial values
+edata="x" #experimental data
+init="i1" #initial values
 par="1" #set of parameters
 mode="0" #-Fit with Simulated annealing, find -Number of independent parameters,
 tst=yes

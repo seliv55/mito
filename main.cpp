@@ -119,8 +119,8 @@ float Ldistr::efit(double *py){
 int main( int argc, char *argv[] ){
    cout<<"NN="<<NN<<'\n';
    cout<<"edata "<<argv[1]<<", init values "<<argv[2]<<", parameters " <<argv[3]<<", mode "<<argv[4]<<'\n';
-   double x, tint(100.);
-   char fn[22];
+   double x, tint(200.);
+   char fn[22]; string edata=(string)argv[1];
  //define last parameter-file:
    for(int i=ifn+1;;i++) { sprintf(fn,"%i",i);
 	   ifstream checkfi(fn);
@@ -133,7 +133,7 @@ int main( int argc, char *argv[] ){
  //    deliv_();
    double *py = &ystart[0];  cout.precision(3);
    horse.setisot(py); 
-   horse.readexp(2,(string)argv[1]);//read experiment
+//   if(edata.size()>1) horse.readexp(2,edata);//read experiment
    horse.read((string)argv[2]);//"i0"); // read init values
    horse.nv.read(argv[3],1);// read parameters
   //   horse.glufl(); return 0;
