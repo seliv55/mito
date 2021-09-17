@@ -77,7 +77,7 @@ cd [Mitodyn directory]
 ```
 ./mito.sh
 ```
-![Ca-dependence](kin/Fig8.tif)
+![Ca-dependence](./kin/Fig8.tif)
 *Simulation of Ca2+ uptake. Dynamics of ubiquinol, A; the matrix pH, B; Δψ, C; ROS generation rates in complexes I (solid lines) and II (dashed lines), D, and in complex III, E; potentially ROS generating species, expressed as the ratio to the total amount of the complexes. External Ca2+ concentration, F. The curves marked as “1” correspond to the initial Ca2+ concentration of 5 nmol/mg prot, curves “2” to 9 nmol/mg prot, curves “3” to 12 nmol/mg prot,*
 
 
