@@ -1,15 +1,17 @@
 # Mitodyn
 Version: 1.0
 
-![Logo](RC.png)
-
 ## Short Description
 
 A kinetic model of mitochondrial respiration linked with cellular energetic metabolism and glutamate transport in neurons
 
 ## Description
 
-The software tool “Mitodyn”, coded in C++,  supports an analysis of mitochondrial and cellular energy metabolism dynamics. It is based on a kinetic model, represented by a system of ordinary differential equations (ODEs). The model describes mitochondrial electron transport, biochemical reactions providing substrates for the electron transport, oxidative phosphorylation, ATP consumption, and transport of some metabolites through the cellular and inner mitochondrial membranes. It is customized for neuronal cells.
+The software tool "Mitodyn", coded in C++,  supports an analysis of mitochondrial and cellular energy metabolism dynamics. It is based on a kinetic model, represented by a system of ordinary differential equations (ODEs). The model describes the details of the electron transport through the mitochondrial respiratory chain (RC) generating electrochemical proton potential (Δμ<sub>H</sub>⁺) and reactive oxygen species (ROS). It also describes biochemical reactions providing substrates for the electron transport, oxidative phosphorylation, ATP consumption, and transport of some metabolites through the cellular and inner mitochondrial membranes. The model is customized for neuronal cells. The scheme of reactions implemented in this model is shown in Fig 1. The functional structure of complex III reactions (Q-cycle) underlies the bistability of the electron transport. It can persist either in "functional" state that provides a high Δμ<sub>H</sub>⁺ and low ROS generation rate or in "signaling" state that provides a low Δμ<sub>H</sub>⁺ and high ROS generation rate. The latter state is linked in the model with the mitochondrial permeability transition (MPT), i.e., a high increase of the inner membrane permeability.
+
+![Fig 1](RC.png)
+
+Fig 1.The scheme of reactions implemented in the reduced model. In the model, electron transport through the RC is described in detail as the subsequent transformation of redox states of respiratory complexes (CI, CII, CIII, CIV). The model also describes glycolysis (violet arrows), the Krebs cycle (blue arrows), ATP consumption (orange arrows), glutamate transport and metabolism (green arrows), oxidative phosphorylation ( yellow arrows). ATP synthase (ATPsyn) can be transformed to the permeability transition pore (PTP). The latter process causes MPT.
 
 ## Key features
 
@@ -77,7 +79,7 @@ cd [Mitodyn directory]
 ```
 ./mito.sh
 ```
-![Ca-dependence](./kin/Fig8.png)
+![Ca-dependence](kin/Fig8.tif)
 *Simulation of Ca2+ uptake. Dynamics of ubiquinol, A; the matrix pH, B; Δψ, C; ROS generation rates in complexes I (solid lines) and II (dashed lines), D, and in complex III, E; potentially ROS generating species, expressed as the ratio to the total amount of the complexes. External Ca2+ concentration, F. The curves marked as “1” correspond to the initial Ca2+ concentration of 5 nmol/mg prot, curves “2” to 9 nmol/mg prot, curves “3” to 12 nmol/mg prot,*
 
 
